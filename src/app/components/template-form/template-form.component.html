@@ -9,6 +9,25 @@
     <hr>
     {{userModel | json}}
 
+    <!-- <div ngModelGroup="address">
+        <div class="mb-3">
+            <label for="street" class="form-label">Street</label>
+            <input name="street" type="text" class="form-control" id="street">            
+        </div>
+        <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input name="city" type="text" class="form-control" id="city">            
+        </div>
+        <div class="mb-3">
+            <label for="state" class="form-label">State</label>
+            <input name="state" type="text" class="form-control" id="state">            
+        </div>
+        <div class="mb-3">
+            <label for="postalCode" class="form-label">Postal Code</label>
+            <input name="postalCode" type="text" class="form-control" id="postalCode">            
+        </div>
+    </div> -->
+
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
         <input [(ngModel)]="userModel.name" name="username" type="text" class="form-control" id="name">
