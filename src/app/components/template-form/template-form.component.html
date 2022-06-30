@@ -3,34 +3,11 @@
 </header>
 <hr>
 
-<form #userForm="ngForm">
-
-    {{userForm.value | json}}
-    <hr>
-    {{userModel | json}}
-
-    <!-- <div ngModelGroup="address">
-        <div class="mb-3">
-            <label for="street" class="form-label">Street</label>
-            <input name="street" type="text" class="form-control" id="street">            
-        </div>
-        <div class="mb-3">
-            <label for="city" class="form-label">City</label>
-            <input name="city" type="text" class="form-control" id="city">            
-        </div>
-        <div class="mb-3">
-            <label for="state" class="form-label">State</label>
-            <input name="state" type="text" class="form-control" id="state">            
-        </div>
-        <div class="mb-3">
-            <label for="postalCode" class="form-label">Postal Code</label>
-            <input name="postalCode" type="text" class="form-control" id="postalCode">            
-        </div>
-    </div> -->
-
+<form #userForm="ngForm" autocomplete="off">
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input [(ngModel)]="userModel.name" name="username" type="text" class="form-control" id="name">
+        <input #username="ngModel" required [(ngModel)]="userModel.name" name="name" type="text" class="form-control" id="name">
+        {{username.invalid}}
     </div>
 
     <div class="mb-3">
@@ -53,23 +30,45 @@
 
     <div class="mb-3">
         <div class="form-check">
-            <input [(ngModel)]="userModel.timePreference" name="timePreference" value="morning" class="form-check-input" type="radio" id="morning">
+            <input [(ngModel)]="userModel.timePreference" name="timePreference" value="morning" class="form-check-input"
+                type="radio" id="morning">
             <label class="form-check-label" for="morning">Morning (9am - 12pm)</label>
         </div>
         <div class="form-check">
-            <input [(ngModel)]="userModel.timePreference" name="timePreference" value="evening" class="form-check-input" type="radio" id="evening">
+            <input [(ngModel)]="userModel.timePreference" name="timePreference" value="evening" class="form-check-input"
+                type="radio" id="evening">
             <label class="form-check-label" for="evening">Evening (5pm - 8pm)</label>
         </div>
     </div>
 
     <div class="mb-3">
         <div class="form-check">
-            <input [(ngModel)]="userModel.subscribe" name="subscribe" class="form-check-input" type="checkbox" id="promotionalOffer">
+            <input [(ngModel)]="userModel.subscribe" name="subscribe" class="form-check-input" type="checkbox"
+                id="promotionalOffer">
             <label class="form-check-label" for="promotionalOffer">
                 Send me promotional offers
             </label>
         </div>
     </div>
+
+    <!-- <div ngModelGroup="address">
+        <div class="mb-3">
+            <label for="street" class="form-label">Street</label>
+            <input name="street" type="text" class="form-control" id="street">            
+        </div>
+        <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input name="city" type="text" class="form-control" id="city">            
+        </div>
+        <div class="mb-3">
+            <label for="state" class="form-label">State</label>
+            <input name="state" type="text" class="form-control" id="state">            
+        </div>
+        <div class="mb-3">
+            <label for="postalCode" class="form-label">Postal Code</label>
+            <input name="postalCode" type="text" class="form-control" id="postalCode">            
+        </div>
+    </div> -->    
 
     <button type="submit" class="btn btn-primary">Submit form</button>
 </form>
