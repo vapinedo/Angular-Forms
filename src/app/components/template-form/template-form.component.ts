@@ -9,7 +9,7 @@ import { UserModel } from 'src/app/models/user.model';
 export class TemplateFormComponent implements OnInit {
 
   topics = ['Angular', 'React', 'Node JS', 'Next JS'];
-  userModel = new UserModel('', 'valp@gmail.com', 555987377, '', 'morning', true);
+  userModel = new UserModel('Valp', 'valp@gmail.com', 555987377, '', 'morning', true);
 
   constructor() { }
 

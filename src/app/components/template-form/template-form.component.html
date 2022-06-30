@@ -8,6 +8,9 @@
         <label for="name" class="form-label">Name</label>
         <input #name="ngModel" required [(ngModel)]="userModel.name" name="name" type="text"
             [class.is-invalid]="name.invalid && name.touched" class="form-control" id="name">
+        <div *ngIf="name.errors && (name.invalid || name.touched)">
+            <small *ngIf="name.errors['required']" class="text-danger">Name is required</small>
+        </div>
     </div>
 
     <div class="mb-3">
