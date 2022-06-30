@@ -1,0 +1,51 @@
+<header>
+    <h2>Bootcamp Enrollment <small class="text-muted">:: Template Form</small></h2>
+</header>
+<hr>
+
+<form>
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name">
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email">
+    </div>
+
+    <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="text" class="form-control" id="phone">
+    </div>
+
+    <div class="mb-3">
+        <label for="phone" class="form-label">Topic</label>
+        <select class="form-select">
+            <option selected>Select one</option>
+            <option *ngFor="let topic of topics">{{topic}}</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="timePreference" id="morning">
+            <label class="form-check-label" for="morning">Morning (9am - 12pm)</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="timePreference" id="evening">
+            <label class="form-check-label" for="evening">Evening (5pm - 8pm)</label>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="promotionalOffer">
+            <label class="form-check-label" for="promotionalOffer">
+                Send me promotional offers
+            </label>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit form</button>
+</form>
