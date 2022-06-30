@@ -6,13 +6,13 @@
 <form #userForm="ngForm" autocomplete="off">
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input #username="ngModel" required [(ngModel)]="userModel.name" name="name" type="text" class="form-control" id="name">
-        {{username.invalid}}
+        <input #name="ngModel" required [(ngModel)]="userModel.name" name="name" type="text"
+            [class.is-invalid]="name.invalid && name.touched" class="form-control" id="name">
     </div>
 
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input [(ngModel)]="userModel.email" name="email" type="email" class="form-control" id="email">
+        <input #phone="ngModel" [(ngModel)]="userModel.email" name="email" type="email" class="form-control" id="email">
     </div>
 
     <div class="mb-3">
@@ -68,7 +68,7 @@
             <label for="postalCode" class="form-label">Postal Code</label>
             <input name="postalCode" type="text" class="form-control" id="postalCode">            
         </div>
-    </div> -->    
+    </div> -->
 
     <button type="submit" class="btn btn-primary">Submit form</button>
 </form>
