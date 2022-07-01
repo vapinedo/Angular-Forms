@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
+import { EnrollmentService } from 'src/app/services/enrollment.service';
 
 @Component({
   selector: 'app-template-form',
@@ -20,7 +21,7 @@ export class TemplateFormComponent implements OnInit {
     true
   );
 
-  constructor() {}
+  constructor(private _enrollmentSvc: EnrollmentService) {}
 
   ngOnInit(): void {}
 
@@ -30,5 +31,14 @@ export class TemplateFormComponent implements OnInit {
     } else {
       this.topicHasError = false;
     }
+  }
+
+  onSubmit() {
+    console.log(this.userModel);
+    this._enrollmentSvc.enroll(this.userModel)
+      .subscribe(
+        data => console.log('Successs!', data),
+        error => console.log('Error', error)
+      )
   }
 }
