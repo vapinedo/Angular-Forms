@@ -11,6 +11,7 @@ export class TemplateFormComponent implements OnInit {
   
   topics = ['Angular', 'React', 'Node JS', 'Next JS'];
   topicHasError: boolean = true;
+  formSubmitted: boolean = false;
 
   userModel = new UserModel(
     'Valp',
@@ -34,7 +35,7 @@ export class TemplateFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.userModel);
+    this.formSubmitted = true;
     this._enrollmentSvc.enroll(this.userModel)
       .subscribe(
         data => console.log('Successs!', data),
