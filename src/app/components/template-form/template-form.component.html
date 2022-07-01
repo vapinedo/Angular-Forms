@@ -3,6 +3,10 @@
 </header>
 <hr>
 
+<div *ngIf="errorMessage" class="alert alert-danger">
+    {{errorMessage}}
+</div>
+
 <form *ngIf="!formSubmitted" (ngSubmit)="onSubmit()" #userForm="ngForm" autocomplete="off" novalidate>
 
     {{userForm.form.valid}}

@@ -8,10 +8,10 @@ import { EnrollmentService } from 'src/app/services/enrollment.service';
   styleUrls: ['./template-form.component.scss'],
 })
 export class TemplateFormComponent implements OnInit {
-  
   topics = ['Angular', 'React', 'Node JS', 'Next JS'];
   topicHasError: boolean = true;
   formSubmitted: boolean = false;
+  errorMessage: string = '';
 
   userModel = new UserModel(
     'Valp',
@@ -36,10 +36,9 @@ export class TemplateFormComponent implements OnInit {
 
   onSubmit() {
     this.formSubmitted = true;
-    this._enrollmentSvc.enroll(this.userModel)
-      .subscribe(
-        data => console.log('Successs!', data),
-        error => console.log('Error', error)
-      )
+    this._enrollmentSvc.enroll(this.userModel).subscribe(
+      (data) => console.log('Successs!', data),
+      (error) => this.errorMessage = error.statusText
+    );
   }
 }
