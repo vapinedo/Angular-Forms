@@ -34,11 +34,12 @@ export class TemplateFormComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    this.formSubmitted = true;
-    this._enrollmentSvc.enroll(this.userModel).subscribe(
-      (data) => console.log('Successs!', data),
-      (error) => this.errorMessage = error.statusText
-    );
+  onSubmit(userForm: any) {
+    console.log(userForm)
+    // this.formSubmitted = true;
+    // this._enrollmentSvc.enroll(this.userModel).subscribe(
+    //   (data) => console.log('Successs!', data),
+    //   (error) => this.errorMessage = error.statusText
+    // );
   }
 }

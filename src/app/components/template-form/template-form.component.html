@@ -7,7 +7,7 @@
     {{errorMessage}}
 </div>
 
-<form *ngIf="!formSubmitted" (ngSubmit)="onSubmit()" #userForm="ngForm" autocomplete="off" novalidate>
+<form *ngIf="!formSubmitted" (ngSubmit)="onSubmit(userForm)" #userForm="ngForm" autocomplete="off" novalidate>
 
     {{userForm.form.valid}}
 
