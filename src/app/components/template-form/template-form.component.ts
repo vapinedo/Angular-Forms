@@ -4,16 +4,31 @@ import { UserModel } from 'src/app/models/user.model';
 @Component({
   selector: 'app-template-form',
   templateUrl: './template-form.component.html',
-  styleUrls: ['./template-form.component.scss']
+  styleUrls: ['./template-form.component.scss'],
 })
 export class TemplateFormComponent implements OnInit {
-
+  
   topics = ['Angular', 'React', 'Node JS', 'Next JS'];
-  userModel = new UserModel('Valp', 'valp@gmail.com', 555987377, '', 'morning', true);
+  topicHasError: boolean = true;
 
-  constructor() { }
+  userModel = new UserModel(
+    'Valp',
+    'valp@gmail.com',
+    555987377,
+    'default',
+    'morning',
+    true
+  );
 
-  ngOnInit(): void {
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  validateTopic(value: string) {
+    if (value === 'default') {
+      this.topicHasError = true;
+    } else {
+      this.topicHasError = false;
+    }
   }
-
 }

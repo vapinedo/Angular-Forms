@@ -25,10 +25,15 @@
 
     <div class="mb-3">
         <label for="phone" class="form-label">Topic</label>
-        <select [(ngModel)]="userModel.topic" name="topic" class="form-select">
-            <option value="">Select one</option>
+        <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value)" #topic="ngModel"
+            [(ngModel)]="userModel.topic" name="topic" [class.is-invalid]="topicHasError && topic.touched"
+            class="form-select">
+            <option value="default">Select one</option>
             <option *ngFor="let topic of topics">{{topic}}</option>
         </select>
+        <div *ngIf="topic.errors && (topicHasError || topic.touched)">
+            <small class="text-danger">Name is required</small>
+        </div>
     </div>
 
     <div class="mb-3">
