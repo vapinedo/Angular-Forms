@@ -3,21 +3,25 @@
 </header>
 <hr>
 
-<form>
+<form [formGroup]="registrationForm">
     <div class="mb-3">
         <label class="form-label">Username</label>
-        <input type="text" class="form-control">
+        <input formControlName="userName" type="text" class="form-control">
     </div>
 
     <div class="mb-3">
         <label class="form-label">Password</label>
-        <input type="password" class="form-control">
+        <input formControlName="password" type="password" class="form-control">
     </div>
 
     <div class="mb-3">
         <label class="form-label">Confirm Password</label>
-        <input type="password" class="form-control">
+        <input formControlName="confirmPassword" type="password" class="form-control">
     </div>
 
     <button type="submit" class="btn btn-primary">Register</button>
 </form>
+
+<div class="mt-4">
+    {{registrationForm.value | json}}
+</div>
