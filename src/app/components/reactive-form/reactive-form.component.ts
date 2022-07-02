@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
-  styleUrls: ['./reactive-form.component.scss']
+  styleUrls: ['./reactive-form.component.scss'],
 })
 export class ReactiveFormComponent implements OnInit {
-
   // registrationForm = new FormGroup({
   //   userName: new FormControl("Valp"),
   //   password: new FormControl(""),
@@ -15,25 +14,26 @@ export class ReactiveFormComponent implements OnInit {
   //   address: new FormGroup({
   //     city: new FormControl(""),
   //     state: new FormControl(""),
-  //     postalCode: new FormControl(""),      
+  //     postalCode: new FormControl(""),
   //   }),
   // });
 
-  constructor(private _fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
-  registrationForm = this._fb.group({
-    userName: ["Valp"],
-    password: [""],
-    confirmPassword: [""],
-    address: this._fb.group({
-      city: [""],
-      state: [""],
-      postalCode: [""],
-    })
+  registrationForm = this.fb.group({
+    userName: ['', [Validators.required, Validators.minLength(3)]],
+    password: [''],
+    confirmPassword: [''],
+    address: this.fb.group({
+      city: [''],
+      state: [''],
+      postalCode: [''],
+    }),
   });
 
-  ngOnInit(): void {
-  }
+  get userName() { return this.registrationForm.get('userName'); }
+
+  ngOnInit(): void {}
 
   loadApiData() {
     // this.registrationForm.setValue({
@@ -43,13 +43,12 @@ export class ReactiveFormComponent implements OnInit {
     //   address: {
     //     city: "City",
     //     state: "State",
-    //     postalCode: "123456",     
+    //     postalCode: "123456",
     //   },
-      this.registrationForm.patchValue({
-      userName: "Bruce",
-      password: "test",
-      confirmPassword: "test",
+    this.registrationForm.patchValue({
+      userName: 'Bruce',
+      password: 'test',
+      confirmPassword: 'test',
     });
   }
-
 }
