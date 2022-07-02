@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -8,18 +8,29 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ReactiveFormComponent implements OnInit {
 
-  registrationForm = new FormGroup({
-    userName: new FormControl("Valp"),
-    password: new FormControl(""),
-    confirmPassword: new FormControl(""),
-    address: new FormGroup({
-      city: new FormControl(""),
-      state: new FormControl(""),
-      postalCode: new FormControl(""),      
-    }),
-  });
+  // registrationForm = new FormGroup({
+  //   userName: new FormControl("Valp"),
+  //   password: new FormControl(""),
+  //   confirmPassword: new FormControl(""),
+  //   address: new FormGroup({
+  //     city: new FormControl(""),
+  //     state: new FormControl(""),
+  //     postalCode: new FormControl(""),      
+  //   }),
+  // });
 
-  constructor() { }
+  constructor(private _fb: FormBuilder) { }
+
+  registrationForm = this._fb.group({
+    userName: ["Valp"],
+    password: [""],
+    confirmPassword: [""],
+    address: this._fb.group({
+      city: [""],
+      state: [""],
+      postalCode: [""],
+    })
+  });
 
   ngOnInit(): void {
   }
@@ -34,8 +45,7 @@ export class ReactiveFormComponent implements OnInit {
     //     state: "State",
     //     postalCode: "123456",     
     //   },
-    // });
-    this.registrationForm.patchValue({
+      this.registrationForm.patchValue({
       userName: "Bruce",
       password: "test",
       confirmPassword: "test",
