@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { forbiddenValidator } from 'src/app/shared/username-validator';
+import { forbiddenValidator, passwordValidator } from 'src/app/shared/custom-validators';
 
 @Component({
   selector: 'app-reactive-form',
@@ -34,9 +34,11 @@ export class ReactiveFormComponent implements OnInit {
       state: [''],
       postalCode: [''],
     }),
-  });
+  }, {validators: passwordValidator});
 
-  get userName() { return this.registrationForm.get('userName'); }
+  get userName() {return this.registrationForm.get('userName');}
+  get password() {return this.registrationForm.get('password');}
+  get confirmPassword() {return this.registrationForm.get('confirmPassword');}
 
   ngOnInit(): void {}
 
