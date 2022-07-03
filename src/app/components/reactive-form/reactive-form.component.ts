@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { forbiddenValidator } from 'src/app/shared/username-validator';
 
 @Component({
   selector: 'app-reactive-form',
@@ -21,7 +22,11 @@ export class ReactiveFormComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   registrationForm = this.fb.group({
-    userName: ['', [Validators.required, Validators.minLength(3)]],
+    userName: ['', [
+      Validators.required, 
+      Validators.minLength(3),
+      forbiddenValidator(['admin', 'password'])
+    ]],
     password: [''],
     confirmPassword: [''],
     address: this.fb.group({

@@ -10,11 +10,15 @@
 <form [formGroup]="registrationForm">
     <div class="mb-3">
         <label class="form-label">Username</label>
-        <input [class.is-invalid]="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched"
+        <input
+            [class.is-invalid]="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched"
             formControlName="userName" type="text" class="form-control">
         <div *ngIf="userName?.invalid && userName?.touched">
             <small *ngIf="userName?.errors?.['required']" class="text-danger">Username is required</small>
-            <small *ngIf="userName?.errors?.['minlength']"  class="text-danger">Username must be at lest 3 characters</small>
+            <small *ngIf="userName?.errors?.['minlength']" class="text-danger">Username must be at lest 3
+                characters</small>
+            <small *ngIf="userName?.errors?.['forbidden']"
+                class="text-danger">{{userName?.errors?.['forbidden'].value}} is not allowed as username</small>
         </div>
     </div>
 
