@@ -11,15 +11,28 @@
     <div class="mb-3">
         <label class="form-label">Username</label>
         <input
-            [class.is-invalid]="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched"
+            [class.is-invalid]="userName?.invalid && userName?.touched"
             formControlName="userName" type="text" class="form-control">
         <div *ngIf="userName?.invalid && userName?.touched">
             <small *ngIf="userName?.errors?.['required']" class="text-danger">Username is required</small>
             <small *ngIf="userName?.errors?.['minlength']" class="text-danger">Username must be at lest 3
                 characters</small>
-            <small *ngIf="userName?.errors?.['forbidden']"
-                class="text-danger">{{userName?.errors?.['forbidden'].value}} is not allowed as username</small>
+            <small *ngIf="userName?.errors?.['forbidden']" class="text-danger">{{userName?.errors?.['forbidden'].value}}
+                is not allowed as username</small>
         </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input [class.is-invalid]="email?.invalid && email?.touched" type="email" formControlName="email" class="form-control">
+        <small *ngIf="email?.errors?.['required'] && email?.touched" class="text-danger">Email is required</small>
+    </div>
+
+    <div class="form-check mb-3">
+        <input formControlName="subscribe" class="form-check-input" type="checkbox" value="" id="subscribe">
+        <label class="form-check-label" for="subscribe">
+            Send me promotional offers
+        </label>
     </div>
 
     <div class="mb-3">
@@ -29,7 +42,8 @@
 
     <div class="mb-3">
         <label class="form-label">Confirm Password</label>
-        <input [class.is-invalid]="registrationForm?.errors?.['misMatch']" formControlName="confirmPassword" type="password" class="form-control">
+        <input [class.is-invalid]="registrationForm?.errors?.['misMatch']" formControlName="confirmPassword"
+            type="password" class="form-control">
         <small *ngIf="registrationForm?.errors?.['misMatch']" class="text-danger">Passwords do not match</small>
     </div>
 
