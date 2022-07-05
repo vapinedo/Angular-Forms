@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { RegistrtationService } from 'src/app/services/registration.service';
 import { forbiddenValidator, passwordValidator } from 'src/app/shared/custom-validators';
 
 @Component({
@@ -22,7 +23,10 @@ export class ReactiveFormComponent implements OnInit {
   //   }),
   // });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder, 
+    private registrtationSvc: RegistrtationService
+  ) {}
 
   get userName() {return this.registrationForm.get('userName');}
   get email() {return this.registrationForm.get('email');}
@@ -80,5 +84,14 @@ export class ReactiveFormComponent implements OnInit {
       password: 'test',
       confirmPassword: 'test',
     });
+  }
+
+  onSubmit() {
+    console.log(this.registrationForm.value);
+    this.registrtationSvc.register(this.registrationForm.value)
+      .subscribe(
+        response => console.log("Success ::", response),
+        error => console.log("Error ::", error)
+      )
   }
 }

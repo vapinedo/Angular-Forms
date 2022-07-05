@@ -6,14 +6,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class EnrollmentService {
+export class RegistrtationService {
 
   private url: string = 'http://localhost:3000/enroll';
 
   constructor(private _http: HttpClient) { }
 
-  enroll(user: UserModel) {
-    return this._http.post<any>(this.url, user)
+  register(userData: any) {
+    return this._http.post<any>(this.url, userData)
       .pipe(catchError(this.errorHandler))
   }
 
