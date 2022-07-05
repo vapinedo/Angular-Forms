@@ -24,8 +24,13 @@
 
     <div class="mb-3">
         <label class="form-label">Email</label>
+        <button (click)="addAlternateEmail()" type="button" class="btn btn-sm btn-outline-secondary mx-2 form-label">Add Email</button>
         <input [class.is-invalid]="email?.invalid && email?.touched" type="email" formControlName="email" class="form-control">
         <small *ngIf="email?.errors?.['required'] && email?.touched" class="text-danger">Email is required</small>
+
+        <div formArrayName="alternateEmails" *ngFor="let email of alternateEmails.controls; let i = index">
+            <input type="text" class="form-control mt-2" [formControlName]="i">
+        </div>
     </div>
 
     <div class="form-check mb-3">

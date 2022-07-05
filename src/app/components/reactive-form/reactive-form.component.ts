@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { forbiddenValidator, passwordValidator } from 'src/app/shared/custom-validators';
 
 @Component({
@@ -28,6 +28,11 @@ export class ReactiveFormComponent implements OnInit {
   get email() {return this.registrationForm.get('email');}
   get password() {return this.registrationForm.get('password');}
   get confirmPassword() {return this.registrationForm.get('confirmPassword');}
+  get alternateEmails() {return this.registrationForm.get('alternateEmails') as FormArray; }
+
+  addAlternateEmail() {
+    this.alternateEmails.push(this.fb.control(''));
+  }
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -45,6 +50,7 @@ export class ReactiveFormComponent implements OnInit {
         state: [''],
         postalCode: [''],
       }),
+      alternateEmails: this.fb.array([]),
     }, {validators: passwordValidator});
 
     this.registrationForm.get('subscribe')?.valueChanges
